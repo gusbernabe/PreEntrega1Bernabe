@@ -1,0 +1,51 @@
+@use '_commons' as c;
+
+#pie{
+    grid-area: pie;
+    width: 100%;
+    height: 120px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: map-get(c.$colores,fondo);
+
+    .pie__items {
+        
+        a{
+            color: map-get(c.$colores,links);
+        text-decoration-line: none;
+        }
+    
+        & :hover{
+            transition: all 1s ease;
+            color: map-get(c.$colores, hover);
+        }
+    }
+
+    .wsp{
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: center;
+        gap: 10px;
+        color: map-get(c.$colores, links);
+        height: 80px;
+        width: 50%;
+        padding-top: 25px;
+    
+    }
+    
+    .wsp-icon{
+        color: map-get(c.$colores, links);
+    }
+    
+    .insta{
+        @extend .wsp;
+    }
+    
+    .insta-icon{
+        @extend .wsp-icon;
+    }
+
+}

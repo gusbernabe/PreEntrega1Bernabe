@@ -1,0 +1,346 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap");
+* {
+  font-family: "Nunito Sans", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+#cabecera {
+  background-color: #252525;
+}
+
+.logo {
+  height: 70px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.logo__header {
+  font-size: 50px;
+}
+
+.menu__navegacion {
+  font-size: 20px;
+}
+
+.menu__item :hover {
+  transition: all 1s ease;
+  color: #ff6e6c !important;
+}
+
+.navbar-toggler {
+  border-color: white;
+  border-radius: 20px;
+}
+
+#contenedor__index {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(6, auto);
+  grid-template-areas: "cab" "ppal" "nom" "prod" "comp" "pie";
+}
+
+#contenedor__contacto {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(6, auto);
+  grid-template-areas: "cab" "ppal" "nom" "formul" "comp" "pie";
+}
+
+#contenedor__acercade {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(6, auto);
+  grid-template-areas: "cab" "ppal" "nom" "acerca" "comp" "pie";
+}
+
+#contenedor__locales {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(6, auto);
+  grid-template-areas: "cab" "ppal" "nom" "maps" "comp" "pie";
+}
+
+#contenedor__productos {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(6, auto);
+  grid-template-areas: "cab" "ppal" "nom" "prod" "comp" "pie";
+}
+
+#contenedor__ofertas {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(6, auto);
+  grid-template-areas: "cab" "ppal" "nom" "prod" "comp" "pie";
+}
+
+#cabecera {
+  grid-area: cab;
+  background-color: #252525;
+  z-index: 2;
+}
+
+body {
+  z-index: 1;
+  background-color: #f4effc;
+}
+
+#img__principal {
+  grid-area: ppal;
+}
+
+#nomenclatura {
+  grid-area: nom;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 120px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#nomenclatura .encabezado {
+  padding-top: 20px;
+}
+
+#productos {
+  grid-area: prod;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+#productos #ambos__primerafila, #productos #ambos__segundafila {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+#productos .ambos__primerafila__container {
+  position: relative;
+  height: 600px;
+  width: 325px;
+  box-shadow: 0 0 20px 5px #e4c5f3;
+  margin-bottom: 40px;
+}
+#productos .ambos__primerafila__container .img-preview {
+  height: 450px;
+  width: 325px;
+  margin-bottom: 20px;
+}
+#productos .ambos__primerafila__container .texto__productos {
+  text-align: center;
+  margin-bottom: 15px;
+}
+#productos .ambos__primerafila__container .texto__productos--purchase {
+  text-align: center;
+}
+#productos .ambos__primerafila__container .enlace {
+  text-decoration: none;
+  color: white;
+  padding: 7px;
+  padding-left: 14px;
+  padding-right: 14px;
+  background: #252525;
+  border-color: #252525;
+  transition: all 1s ease;
+  position: relative;
+  border-radius: 20px;
+}
+#productos .ambos__primerafila__container .notificacion {
+  position: absolute;
+  padding: 8px;
+  border-radius: 20px;
+  color: white;
+  background-color: #67568c;
+  top: -20px;
+  left: 265px;
+}
+#productos .ambos__primerafila__container .notificacion-1 {
+  position: absolute;
+  padding: 8px;
+  border-radius: 20px;
+  color: white;
+  background-color: #ff6e6c;
+  top: -20px;
+  left: 265px;
+  animation: destacado 3s infinite;
+}
+@keyframes destacado {
+  0% {
+    background-color: #67568c;
+  }
+  50% {
+    background-color: #ff6e6c;
+  }
+  100% {
+    background-color: #67568c;
+  }
+}
+
+#maps {
+  grid-area: maps;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  padding-bottom: 35px;
+}
+
+#acercade__texto {
+  grid-area: acerca;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+}
+#acercade__texto .quienessomos {
+  text-align: center;
+  width: 80%;
+  margin-bottom: 25px;
+}
+
+#formulario {
+  grid-area: formul;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  padding-bottom: 35px;
+}
+#formulario .casilla {
+  width: 350px;
+  height: 20px;
+  border-radius: 20px;
+  padding: 15px !important;
+  padding-left: 10px;
+  border: solid 2px;
+  background-color: #f4effc;
+}
+#formulario .casilla--text {
+  width: 350px;
+  height: 200px;
+  border-radius: 20px;
+  padding: 10px;
+  padding-left: 10px;
+  border: solid 2px;
+  background-color: #f4effc;
+}
+#formulario .button {
+  text-decoration: none;
+  color: white;
+  padding: 7px;
+  padding-left: 14px;
+  padding-right: 14px;
+  background: #252525;
+  border-color: #252525;
+  transition: all 1s ease;
+  border-radius: 20px;
+  font-size: 15px;
+  border: none;
+}
+
+#complemento {
+  grid-area: comp;
+  display: flex;
+  width: 100%;
+  height: auto;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+#complemento .icono-complemento {
+  margin-bottom: 20px;
+}
+#complemento .complemento__item {
+  display: block;
+  width: auto;
+  height: 50%;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+@media only screen and (min-width: 1280px) {
+  #cabecera {
+    position: sticky;
+    top: 0;
+  }
+  #productos {
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  #productos #ambos__primerafila, #productos #ambos__segundafila {
+    flex-direction: row;
+  }
+  #productos #ambos__segundafila {
+    flex-direction: row;
+  }
+  #productos .enlace:hover {
+    text-decoration: none;
+    background: #ff6e6c;
+    color: white;
+  }
+  #formulario .casilla {
+    width: 600px;
+  }
+  #formulario .casilla--text {
+    width: 600px;
+  }
+  #formulario .button:hover {
+    text-decoration: none;
+    background: #ff6e6c;
+    color: white;
+  }
+  #complemento {
+    flex-direction: row;
+    height: 200px;
+  }
+  #complemento .complemento__item {
+    width: 25%;
+  }
+}
+#pie {
+  grid-area: pie;
+  width: 100%;
+  height: 120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #252525;
+}
+#pie .pie__items a {
+  color: white;
+  text-decoration-line: none;
+}
+#pie .pie__items :hover {
+  transition: all 1s ease;
+  color: #ff6e6c;
+}
+#pie .wsp, #pie .insta {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  gap: 10px;
+  color: white;
+  height: 80px;
+  width: 50%;
+  padding-top: 25px;
+}
+#pie .wsp-icon, #pie .insta-icon {
+  color: white;
+}/*# sourceMappingURL=main.css.map */

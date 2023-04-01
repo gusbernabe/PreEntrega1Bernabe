@@ -1,0 +1,399 @@
+@use '_commons' as c;
+
+#contenedor__index{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(6,auto);
+    grid-template-areas:
+    
+    "cab"
+    "ppal"
+    "nom"
+    "prod"
+    "comp"
+    "pie"
+    
+    ;
+}
+
+#contenedor__contacto{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(6,auto);
+    grid-template-areas:
+    
+    "cab"
+    "ppal"
+    "nom"
+    "formul"
+    "comp"
+    "pie"
+    
+    ;
+}
+
+#contenedor__acercade{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(6,auto);
+    grid-template-areas:
+    
+    "cab"
+    "ppal"
+    "nom"
+    "acerca"
+    "comp"
+    "pie"
+    
+    ;
+}
+
+#contenedor__locales{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(6,auto);
+    grid-template-areas:
+    
+    "cab"
+    "ppal"
+    "nom"
+    "maps"
+    "comp"
+    "pie"
+    
+    ;
+}
+
+#contenedor__productos{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(6,auto);
+    grid-template-areas:
+    
+    "cab"
+    "ppal"
+    "nom"
+    "prod"
+    "comp"
+    "pie"
+    
+    ;
+}
+
+#contenedor__ofertas{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(6,auto);
+    grid-template-areas:
+    
+    "cab"
+    "ppal"
+    "nom"
+    "prod"
+    "comp"
+    "pie"
+    
+    ;
+}
+
+// HEADER
+
+#cabecera{
+    grid-area: cab;
+    background-color: map-get(c.$colores, fondo);
+    z-index: 2;
+}
+
+// BODY
+
+body{
+    z-index: 1;
+    background-color: map-get(c.$colores, fondo-body );
+}
+
+// MAIN
+
+#img__principal{
+    grid-area: ppal;
+
+}
+
+#nomenclatura{
+    grid-area: nom;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 120px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    .encabezado{
+        padding-top: 20px;
+    }
+}
+
+// CONTENIDO PRODUCTOS
+
+#productos{
+    grid-area: prod;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    #ambos__primerafila{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    #ambos__segundafila{
+        @extend #ambos__primerafila;
+    }
+
+    .ambos__primerafila__container{
+        position: relative;
+        height: 600px;
+        width: 325px;
+        box-shadow: 0 0 20px 5px map-get(c.$colores, sombra) ;
+        margin-bottom: 40px;
+    
+        .img-preview{
+            height: 450px;
+            width: 325px;
+            margin-bottom: 20px;
+        }
+    
+        .texto__productos{
+            text-align: center;
+            margin-bottom: 15px;
+        }
+    
+        .texto__productos--purchase{
+            text-align: center;
+        }
+    
+        .enlace {
+            text-decoration: none;
+            color: map-get(c.$colores, links);
+            padding: 7px;
+            padding-left: 14px;
+            padding-right: 14px;
+            background: map-get(c.$colores, fondo);
+            border-color: map-get(c.$colores, fondo);
+            transition: all 1s ease;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .notificacion{
+            position: absolute;
+            padding: 8px;
+            border-radius: 20px;
+            color: map-get(c.$colores, links);
+            background-color: map-get(c.$colores, fondo-notificaciones);
+            top: -20px;
+            left: 265px;
+        }
+
+        .notificacion-1{
+            position: absolute;
+            padding: 8px;
+            border-radius: 20px;
+            color: map-get(c.$colores, links);
+            background-color: map-get(c.$colores, hover);
+            top: -20px;
+            left: 265px;
+            animation: destacado 3s infinite;
+
+            @keyframes destacado {
+                0%{background-color: map-get(c.$colores, fondo-notificaciones);}
+                50%{background-color: map-get(c.$colores, hover);}
+                100%{background-color: map-get(c.$colores, fondo-notificaciones);}
+            }
+        }
+
+    }
+
+}
+
+// CONTENIDO LOCALES
+
+#maps{
+    grid-area: maps;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    padding-bottom: 35px;
+}
+
+// CONTENIDO ACERCA DE 
+
+#acercade__texto{
+    grid-area: acerca;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+
+    .quienessomos{
+        text-align: center;
+        width: 80%;
+        margin-bottom: 25px;
+    }
+}
+
+
+
+// CONTENIDO CONTACTO
+
+#formulario{
+    grid-area: formul;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    padding-bottom: 35px;
+
+    .casilla{
+        width: 350px;
+        height: 20px;
+        border-radius: 20px;
+        padding: 15px !important;
+        padding-left: 10px;
+        border: solid 2px;
+        background-color: map-get(c.$colores, fondo-body);
+    }
+
+
+    .casilla--text{
+        width: 350px;
+        height: 200px;
+        border-radius: 20px;
+        padding: 10px;
+        padding-left: 10px;
+        border: solid 2px;
+        background-color: map-get(c.$colores, fondo-body);
+    }
+
+    .button {
+        text-decoration: none;
+        color: map-get(c.$colores, links);
+        padding: 7px;
+        padding-left: 14px;
+        padding-right: 14px;
+        background: map-get(c.$colores, fondo);
+        border-color: map-get(c.$colores, fondo);
+        transition: all 1s ease;
+        border-radius: 20px;
+        font-size: 15px;
+        border: none;
+    }
+
+}
+
+// CONTENIDO COMPLEMENTO
+
+#complemento{
+    grid-area: comp;
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center; 
+
+    .icono-complemento{
+        margin-bottom: 20px;
+    }
+    
+    .complemento__item{
+        display: block;
+        width: auto;
+        height: 50%;
+        text-align: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+}  
+
+
+
+@media only screen and (min-width: 1280px){
+    
+    // HEADER
+
+    #cabecera{
+        position: sticky; top: 0;
+    }
+
+    // CONTENIDO PRODUCTOS
+
+    #productos{
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+
+        #ambos__primerafila{
+            flex-direction: row;
+        }
+    
+        #ambos__segundafila{
+            flex-direction: row;
+        }
+    
+        .enlace:hover {
+            text-decoration: none;
+            background: map-get(c.$colores, hover);
+            color: map-get(c.$colores, links);
+        }
+
+    }
+
+    // CONTENIDO CONTACTOS
+
+    #formulario{
+        .casilla{
+            width: 600px;
+        }
+    
+    
+        .casilla--text{
+            width: 600px;
+        }
+    
+        .button:hover {
+            text-decoration: none;
+            background: map-get(c.$colores, hover);
+            color: map-get(c.$colores, links);
+        }
+
+    }
+
+    // DATOS COMPLEMENTARIOS
+
+    #complemento{
+        flex-direction: row;
+        height: 200px;
+
+        .complemento__item{
+            width: 25%;
+        }
+
+    }
+
+}    
+
