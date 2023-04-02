@@ -13,8 +13,8 @@ if (cantidad >= 2) {
   console.log("Debido a la cantidad de conjuntos que deseas adquirir obtienes un 15% de descuento, el precio final es de $" + total);
 } else {
   total = cantidad * precioConjunto;
-  alert("El total por la cantidad que deseas adquirir es: " + total)
-  console.log("El total por la cantidad que deseas adquirir es: " + total);
+  alert("El total por la cantidad que deseas adquirir es $" + total)
+  console.log("El total por la cantidad que deseas adquirir es $" + total);
 }
 
 // Calcular la cantidad de unidades en stock restante segun la cantidad que vaya a adquirir el usuario 
@@ -22,12 +22,17 @@ if (cantidad >= 2) {
 let stock = 20;
 let unidadesAReducir = cantidad;
 
-for(let i = stock; i > 0; i--){
-  if(i >= unidadesAReducir){
+for (let i = stock; i > 0; i--) {
+  if (i >= unidadesAReducir) {
     stock = stock - unidadesAReducir;
-    console.log("Quedan " + stock + " unidades en stock");
+    if (stock == 1) {
+      console.log("Queda 1 unidad en stock");
+    } else {
+      console.log("Quedan " + stock + " unidades en stock");
+    }
     break;
   } else {
     console.log("No hay unidades suficientes en stock");
   }
 }
+
