@@ -36,3 +36,24 @@ for (let i = stock; i > 0; i--) {
   }
 }
 
+class Producto {
+  constructor(id, nombre, precio) {
+    this.id = id;
+    this.nombre = nombre.toUpperCase();
+    this.precio = parseInt(precio);
+  }
+
+  toString = function () {
+    return this.nombre + "( $" + this.precio + ")";
+  };
+}
+
+let misProductos = [
+  new Producto(1, "Conjunto Monocrome", 15000),
+  new Producto(2, "Conjunto Military Green", 15000),
+  new Producto(3, "Conjunto Green Classic", 15000),
+  new Producto(4, "Conjunto White", 15000),
+  new Producto(5, "Conjunto Onboard", 15000),
+  new Producto(6, "Conjunto Blue", 15000),
+];
+
