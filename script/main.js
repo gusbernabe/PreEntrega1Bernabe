@@ -1,5 +1,4 @@
-// PRE-ENTREGA 1
-
+// INICIO PRE-ENTREGA 1
 // Sumar totales de productos seleccionados y calcular descuento segun promocion de segunda unidad en ofertas.html
 // let cantidad = parseInt(prompt("Ingresa la cantidad de conjuntos que deseas adquirir:"));
 // let precioConjunto = 15000;
@@ -38,9 +37,10 @@
 //   }
 // }
 
-// PRE-ENTREGA 1
+// FIN PRE-ENTREGA 1
 
-// PRE-ENTREGA 2
+// INICIO PRE-ENTREGA 2
+// Calcular a travez del metodo reduce la suma total de los productos a adquirir incluidos dentro del array misProductos
 
 class Producto {
   constructor(id, nombre, precio) {
@@ -54,6 +54,7 @@ class Producto {
   };
 }
 
+// Supuesta cantidad de productos seleccionados: 6
 let misProductos = [
   new Producto(1, "Conjunto Monocrome", 15000),
   new Producto(2, "Conjunto Military Green", 15000),
@@ -63,5 +64,24 @@ let misProductos = [
   new Producto(6, "Conjunto Blue", 15000),
 ];
 
-// PRE-ENTREGA 2
+let precioTotal = misProductos.reduce(
+  (acumulador, unProducto) => acumulador + unProducto.precio,
+  0
+);
+
+console.log(
+  "--> El total por la cantidad de conjuntos seleccionados es " + precioTotal.toFixed(2)
+);
+
+// Calcular una fecha mínima de días para retirar un producto teniendo en cuenta el día que fue adquirido
+
+let fechaActual = new Date();
+const milisegundosPorDia = 24 * 60 * 60 * 1000;
+let cantidadDeDias = 3
+let fechaResultante = new Date(fechaActual.getTime() + milisegundosPorDia * cantidadDeDias);
+
+console.log("Podras retirar tus productos a partir del día", fechaResultante.toLocaleDateString());
+
+
+// FIN PRE-ENTREGA 2
 
