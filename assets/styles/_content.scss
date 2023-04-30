@@ -238,6 +238,55 @@ body{
 
 }
 
+#ventaproducto {
+    grid-area: compprod;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        img {
+            width: 50%;
+        }
+        
+        .descripcion_producto{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+    
+            .texto_descripcion_productos {
+                width: 40%;
+            }
+        
+            .contador[type="number"] {
+                border-radius: 10px;
+                margin-left: 10px;
+                width: 50px;
+                height: 30px;
+                padding-left: 10px;
+                margin-bottom: 20px;
+            }
+
+            .agregar {
+                text-decoration: none;
+                color: map-get(c.$colores, links);
+                padding: 7px;
+                padding-left: 14px;
+                padding-right: 14px;
+                background: map-get(c.$colores, fondo);
+                border: none;
+                transition: all 1s ease;
+                position: relative;
+                border-radius: 20px;
+            }
+        }
+    }
+
+
+}
+
 #compraproducto{
     grid-area: compprod;
 }
@@ -383,9 +432,16 @@ body{
 
     }
 
-    #compraproducto{
-        grid-area: compprod;
+    #ventaproducto{
+        .agregar:hover{
+            text-decoration: none;
+            background: map-get(c.$colores, hover);
+            color: map-get(c.$colores, links);
+        }
     }
+
+
+
 
     // CONTENIDO CONTACTOS
 
