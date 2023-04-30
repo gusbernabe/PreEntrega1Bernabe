@@ -80,6 +80,22 @@
     ;
 }
 
+#contenedor__compraproducto{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(7,auto);
+    grid-template-areas:
+    
+    "cab"
+    "ppal"
+    "nom"
+    "compprod"
+    "comp"
+    "pie"
+    
+    ;
+}
+
 #contenedor__ofertas{
     display: grid;
     grid-template-columns: 100%;
@@ -222,6 +238,10 @@ body{
 
 }
 
+#compraproducto{
+    grid-area: compprod;
+}
+
 // CONTENIDO LOCALES
 
 #maps{
@@ -361,6 +381,10 @@ body{
             color: map-get(c.$colores, links);
         }
 
+    }
+
+    #compraproducto{
+        grid-area: compprod;
     }
 
     // CONTENIDO CONTACTOS

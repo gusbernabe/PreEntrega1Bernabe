@@ -68,6 +68,13 @@
   grid-template-areas: "cab" "ppal" "nom" "prod" "comp" "pie";
 }
 
+#contenedor__compraproducto {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(7, auto);
+  grid-template-areas: "cab" "ppal" "nom" "compprod" "comp" "pie";
+}
+
 #contenedor__ofertas {
   display: grid;
   grid-template-columns: 100%;
@@ -182,6 +189,10 @@ body {
   }
 }
 
+#compraproducto {
+  grid-area: compprod;
+}
+
 #maps {
   grid-area: maps;
   display: flex;
@@ -292,6 +303,9 @@ body {
     text-decoration: none;
     background: #ff6e6c;
     color: white;
+  }
+  #compraproducto {
+    grid-area: compprod;
   }
   #formulario .casilla {
     width: 600px;
