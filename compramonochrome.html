@@ -96,10 +96,14 @@
                 <img src="/assets/img/Productos/Producto 1.jpg" alt="">
                 <div class="descripcion_producto">
                     <h3>CONJUNTO MONOCHROME</h3>
-                    <p class="texto_descripcion_producto">Unidades a adquirir:</p>
-                    <input class="contador" type="number" value="1">
-                    <button class="agregar">Agregar</button>
+                    <label for="unidades">Cuantos conjuntos deseas adquirir</label>
+                    <input type="number" min="1" max="20" value="1" class="contador" id="unidades" />
+                    <button id="agregar" class="btnagregar btnstyle">Agregar al carrito</button>
+                    <p class="respuesta"></p>
                     <p class="total"></p>
+                    <p class="entrega"></p>
+                    <button id="limpiarCarrito" class="limpiarcarrito btnstyle">Limpiar carrito</button>
+
                 </div>
             </div>
         </section>

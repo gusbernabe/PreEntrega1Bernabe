@@ -1,53 +1,14 @@
-// INICIO PRE-ENTREGA 1
-// Sumar totales de productos seleccionados y calcular descuento segun promocion de segunda unidad en ofertas.html
-
-let cantidad = parseInt(prompt("Ingresa la cantidad de conjuntos que deseas adquirir:"));
-let precioConjunto = 15000;
+let unidades = 0;
 let porcentaje = 15;
 let descuento = 0;
 let total = 0;
 
-if (cantidad >= 2) {
-  total = cantidad * precioConjunto;
-  descuento = total * (porcentaje / 100);
-  total = total - descuento;
-  alert("Debido a la cantidad de conjuntos que deseas adquirir obtienes un 15% de descuento, el precio final es de $" + total);
-  console.log("Debido a la cantidad de conjuntos que deseas adquirir obtienes un 15% de descuento, el precio final es de $" + total);
-} else {
-  total = cantidad * precioConjunto;
-  alert("El total por la cantidad que deseas adquirir es $" + total)
-  console.log("El total por la cantidad que deseas adquirir es $" + total);
-}
-
-// Calcular la cantidad de unidades en stock restante segun la cantidad que vaya a adquirir el usuario 
-// El valor de la variante cantidad se debe restar del total del stock 
-let stock = 20;
-let unidadesAReducir = cantidad;
-
-for (let i = stock; i > 0; i--) {
-  if (i >= unidadesAReducir) {
-    stock = stock - unidadesAReducir;
-    if (stock == 1) {
-      console.log("Queda 1 unidad en stock");
-    } else {
-      console.log("Quedan " + stock + " unidades en stock");
-    }
-    break;
-  } else {
-    console.log("No hay unidades suficientes en stock");
-  }
-}
-
-// FIN PRE-ENTREGA 1
-
-// INICIO PRE-ENTREGA 2
-// Calcular a travez del metodo reduce la suma total de los productos a adquirir incluidos dentro del array misProductos
-
 class Producto {
-  constructor(id, nombre, precio) {
+  constructor(id, nombre, precio, cantidad) {
     this.id = id;
     this.nombre = nombre.toUpperCase();
     this.precio = parseInt(precio);
+    this.cantidad = parseInt(cantidad);
   }
 
   toString = function () {
@@ -56,40 +17,125 @@ class Producto {
 }
 
 let misProductos = [
-  new Producto(1, "Conjunto Monocrome", 15000),
-  new Producto(2, "Conjunto Military Green", 15000),
-  new Producto(3, "Conjunto Green Classic", 15000),
-  new Producto(4, "Conjunto White", 15000),
-  new Producto(5, "Conjunto Onboard", 15000),
-  new Producto(6, "Conjunto Blue", 15000),
+  new Producto(1, "Conjunto Monocrome", 15000, 1),
+  new Producto(2, "Conjunto Military Green", 15000, 1),
+  new Producto(3, "Conjunto Green Classic", 15000, 1),
+  new Producto(4, "Conjunto White", 15000, 1),
+  new Producto(5, "Conjunto Onboard", 15000, 1),
+  new Producto(6, "Conjunto Blue", 15000, 1),
 ];
 
-// Econtrar productos con un filter
+function sumar() {
+  const producto = misProductos[0];
+  const cantidad = unidades;
+  const precio = producto.precio;
+  if (cantidad >= 2) {
+    total = cantidad * precio;
+    descuento = cantidad >= 2 ? total * (porcentaje / 100) : 0;
+    total -= descuento;    
+    const mensaje =
+      "Debido a la cantidad de conjuntos que deseas adquirir obtienes un 15% de descuento, el precio final es de $" +
+      total;
+    document.querySelector(".respuesta").innerText = mensaje;
+    document.querySelector(".total").innerText = `Total: $${total}`;
 
-let productoBuscado = prompt("¿Qué productos deseas buscar?");
+    let fechaActual = new Date();
+    const milisegundosPorDia = 24 * 60 * 60 * 1000;
+    let cantidadDeDias = 3
+    let fechaResultante = new Date(fechaActual.getTime() + milisegundosPorDia * cantidadDeDias);
+    const mensajeEntrega = "Podras retirar tus productos a partir del día " + fechaResultante.toLocaleDateString();
+    document.querySelector(".entrega").innerText = mensajeEntrega;
 
-let productosHallados = misProductos.filter(
-  (unProducto) => unProducto.nombre.includes(productoBuscado.toUpperCase())
-);
+    localStorage.setItem(
+      "carrito",
+      JSON.stringify({
+        nombre: producto.nombre,
+        cantidad: cantidad,
+        total: total,
+        fecha: fechaResultante.getTime(),
+      })
+    );
+  } else {
+    total = cantidad * precio;
+    const mensaje = "El total por la cantidad que deseas adquirir es $" + total;
+    document.querySelector(".respuesta").innerText = mensaje;
+    document.querySelector(".total").innerText = `Total: $${total}`;
 
-if (productosHallados.length > 0) {
-  let nombresProductosHallados = productosHallados.map((unProducto) => unProducto.nombre);
-  let mensaje = "La cantidad de productos que se hallaron según tu búsqueda " + productoBuscado + " son: " + productosHallados.length + ". Los nombres de los productos son: " + nombresProductosHallados.join(", ");
+    let fechaActual = new Date();
+    const milisegundosPorDia = 24 * 60 * 60 * 1000;
+    let cantidadDeDias = 3
+    let fechaResultante = new Date(fechaActual.getTime() + milisegundosPorDia * cantidadDeDias);
+    const mensajeEntrega = "Podras retirar tus productos a partir del día " + fechaResultante.toLocaleDateString();
+    document.querySelector(".entrega").innerText = mensajeEntrega;
+    
+    localStorage.setItem(
+      "carrito",
+      JSON.stringify({
+        nombre: producto.nombre,
+        cantidad: cantidad,
+        total: total,
+        fecha: fechaResultante.getTime(),
+      })
+    );
+  }
 
-  alert(mensaje);
-} else {
-  alert("Lo siento, no se encontraron productos que coincidan con tu búsqueda.");
+  const limpiarCarritoBtn = document.getElementById("limpiarCarrito");
+  limpiarCarritoBtn.style.display = "block";
 }
 
-// Calcular una fecha mínima de días para retirar un producto teniendo en cuenta el día que fue adquirido
+const inputUnidades = document.querySelector(".contador");
+inputUnidades.addEventListener("change", () => {
+  unidades = inputUnidades.value;
+});
 
-let fechaActual = new Date();
-const milisegundosPorDia = 24 * 60 * 60 * 1000;
-let cantidadDeDias = 3
-let fechaResultante = new Date(fechaActual.getTime() + milisegundosPorDia * cantidadDeDias);
+const btnagregar = document.getElementById("agregar");
+btnagregar.addEventListener("click", sumar);
 
-console.log("Podras retirar tus productos a partir del día", fechaResultante.toLocaleDateString());
+// Mostrar los datos del carrito de compras al cargar la página
+window.addEventListener("load", () => {
+  const carritoGuardado = localStorage.getItem("carrito");
+  if (carritoGuardado) {
+    const carrito = JSON.parse(carritoGuardado);
+    const mensaje =
+      "Tienes " +
+      carrito.cantidad +
+      " unidades del " +
+      carrito.nombre +
+      " en tu carrito de compras, con un total de $" +
+      carrito.total;
+    document.querySelector(".respuesta").innerText = mensaje;
+    document.querySelector(".total").innerText = `Total: $${carrito.total}`;
+    const limpiarCarritoBtn = document.getElementById("limpiarCarrito");
+    limpiarCarritoBtn.style.display = "block";
+
+    if (carrito.fecha) {
+      const fechaResultante = new Date(carrito.fecha);
+      const mensajeEntrega = "Podras retirar tus productos a partir del día " + fechaResultante.toLocaleDateString();
+      document.querySelector(".entrega").innerText = mensajeEntrega;
+    }
+  }
+});
+
+if (localStorage.getItem("carrito") !== null) {
+  const limpiarCarritoBtn = document.getElementById("limpiarCarrito");
+  limpiarCarritoBtn.style.display = "block";
+}
+
+const limpiarCarritoBtn = document.getElementById("limpiarCarrito");
+limpiarCarritoBtn.addEventListener("click", () => {
+  localStorage.removeItem("carrito");
+  localStorage.removeItem("fechaEntrega"); // Borrar fecha del Local Storage
+  limpiarCarritoBtn.style.display = "none";
+  document.querySelector(".respuesta").innerText = "";
+  document.querySelector(".total").innerText = "";
+  document.querySelector(".entrega").innerText = ""; // Limpiar mensaje de entrega
+});
 
 
-// FIN PRE-ENTREGA 2
+
+
+
+
+
+
 
