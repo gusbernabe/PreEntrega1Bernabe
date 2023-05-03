@@ -25,6 +25,7 @@ let misProductos = [
   new Producto(6, "Conjunto Blue", 15000, 1),
 ];
 
+// Calcular el precio de un producto, su descuento segun la cantidad y la fecha de retiro teniendo en cuenta la fecha actual, guardando estos datos en el local storage
 function sumar() {
   const producto = misProductos[0];
   const cantidad = unidades;
@@ -83,6 +84,7 @@ function sumar() {
   limpiarCarritoBtn.style.display = "block";
 }
 
+// El contador define la cantidad de unidades segun lo que ingrese el usuario
 const inputUnidades = document.querySelector(".contador");
 inputUnidades.addEventListener("change", () => {
   unidades = inputUnidades.value;
@@ -91,7 +93,7 @@ inputUnidades.addEventListener("change", () => {
 const btnagregar = document.getElementById("agregar");
 btnagregar.addEventListener("click", sumar);
 
-// Mostrar los datos del carrito de compras al cargar la página
+// Si el carrito contiene elementos los datos del mismo se mantienen en el html al cargar la página
 window.addEventListener("load", () => {
   const carritoGuardado = localStorage.getItem("carrito");
   if (carritoGuardado) {
@@ -116,6 +118,7 @@ window.addEventListener("load", () => {
   }
 });
 
+// Si hay elementos en el carrito se muestra el boton para limpiarlo
 if (localStorage.getItem("carrito") !== null) {
   const limpiarCarritoBtn = document.getElementById("limpiarCarrito");
   limpiarCarritoBtn.style.display = "block";
@@ -124,11 +127,11 @@ if (localStorage.getItem("carrito") !== null) {
 const limpiarCarritoBtn = document.getElementById("limpiarCarrito");
 limpiarCarritoBtn.addEventListener("click", () => {
   localStorage.removeItem("carrito");
-  localStorage.removeItem("fechaEntrega"); // Borrar fecha del Local Storage
+  localStorage.removeItem("fechaEntrega"); 
   limpiarCarritoBtn.style.display = "none";
   document.querySelector(".respuesta").innerText = "";
   document.querySelector(".total").innerText = "";
-  document.querySelector(".entrega").innerText = ""; // Limpiar mensaje de entrega
+  document.querySelector(".entrega").innerText = "";
 });
 
 
