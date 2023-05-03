@@ -84,7 +84,7 @@ function sumar() {
   limpiarCarritoBtn.style.display = "block";
 }
 
-// El contador define la cantidad de unidades segun lo que ingrese el usuario
+// El contador define la cantidad de unidades segun el numero que defina el usuario
 const inputUnidades = document.querySelector(".contador");
 inputUnidades.addEventListener("change", () => {
   unidades = inputUnidades.value;
