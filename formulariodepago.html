@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Tienda virtual de ambos e indumentaria referida al area medica y enfermeria">
     <meta name="keywords" content="ambos rosario, ambos, rosario, tienda de ambos, tienda de ambos en rosario, venta de ambos, venta de ambos en rosario, venta de insumos medicos, insumos medicos, indumentaria, indumentaria medica, indumentaria para medicos, indumentaria para enfermeros, medicos, emfermeros, salud, venta, tienda, tienda de indumentaria, indumentaria de trabajo, tienda de indumentaria de trabajo">
-    <title>VIT Indumentaria - Sitio web</title>
+    <title>Contacto VIT Indumentaria</title>
     <link rel="icon" type="image/x-icon" href="assets/img/Logos/Favicon.ico">
     <link
     rel="stylesheet"
@@ -21,8 +21,8 @@
 </head>
 
 <body>
-   
-    <div id="contenedor__compraproducto">
+
+    <div id="contenedor__tarjeta">
 
         <header id="cabecera" class="animate__animated animate__fadeInDown">
             
@@ -58,19 +58,19 @@
                 </div>
             </nav>
 
-        </header>    
-    
+        </header>   
+        
         <main id="img__principal" class="animate__animated animate__fadeInDown">
             <div id="carouselExampleAutoplaying" class="carousel slide carousel-fade" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active d-block w-100" data-bs-interval="8000">
-                        <img src="assets/img/Main1.jpg" class="d-block w-100" alt="Muestra de variedad de productos en ambos para medicos o enfermeros">
+                        <img src="assets/img/Main6.jpg" class="d-block w-100" alt="Muestra de variedad de productos en ambos para medicos o enfermeros">
                     </div>
                     <div class="carousel-item d-block w-100" data-bs-interval="8000">
-                        <img src="assets/img/Main2.jpg" class="d-block w-100" alt="Muestra de variedad de productos en ambos para medicos o enfermeros">
+                        <img src="assets/img/Main7.jpg" class="d-block w-100" alt="Muestra de variedad de productos en ambos para medicos o enfermeros">
                     </div>
                     <div class="carousel-item d-block w-100" data-bs-interval="8000">
-                        <img src="assets/img/Main3.jpg" class="d-block w-100" alt="Muestra de variedad de productos en ambos para medicos o enfermeros">
+                        <img src="assets/img/Main8.jpg" class="d-block w-100" alt="Muestra de variedad de productos en ambos para medicos o enfermeros">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
@@ -85,33 +85,48 @@
                 </button>
             </div>
         </main>
-    
+        
         <section id="nomenclatura" class="animate__animated animate__fadeIn">
-            
-            <h4 class="encabezado"><strong>VIT INDUMENTARIA</strong></h4>
-
-            <p class="encabezado__subtitulo">¡NUEVOS INGRESOS!</p>
-           
+            <h4 class="encabezado"><strong>FORMA DE PAGO</strong></h4>
+            <p class="encabezado__subtitulo">Ingresa los datos de tu tarjeta</p>
         </section>
 
-        <section id="ventaproducto" class="animate__animated animate__fadeIn">
-            <div class="container">
-                <img src="assets/img/Productos/Producto 1.jpg" alt="">
-                <div class="descripcion_producto">
-                    <h3>CONJUNTO MONOCHROME</h3>
-                    <label for="unidades">Cuantos conjuntos deseas adquirir</label>
-                    <input type="number" min="1" max="20" value="1" class="contador" id="unidades" />
-                    <button id="agregar" class="btnagregar btnstyle">Agregar al carrito</button>
-                    <p class="respuesta"></p>
-                    <p class="total"></p>
-                    <p class="entrega"></p>
-                    <button id="limpiarCarrito" class="limpiarcarrito btnstyle">Limpiar carrito</button>
-                    <a id="irACarrito" class="btnstyle irACarrito" href="compracarritogral.html">Carrito</a>
-
+        <section id="formulario" class="animate__animated animate__fadeIn">
+        
+            <form id="miFormulario">
+                <div class="form__datos">
+                    <label id="numeroTarjeta" for="numeroTarjeta">Número de Tarjeta</label>
+                    <br>
+                    <input type="text" id="numeroTarjeta" class="casilla" name="numeroTarjeta" required><br><br>
                 </div>
-            </div>
+        
+                <div class="form__datos">
+                    <label id="fechaVencimiento" for="fechaVencimiento">Fecha de Vencimiento</label>
+                    <br>
+                    <input type="text" id="fechaVencimiento" class="casilla" name="fechaVencimiento" required><br><br>
+                </div>
+        
+                <div class="form__datos">
+                    <label id="codigoSeguridad" for="codigoSeguridad">Código de Seguridad</label>
+                    <br>
+                    <input type="text" id="codigoSeguridad" class="casilla" name="codigoSeguridad" required><br><br>
+                </div>
+        
+                <div class="form__datos">
+                    <label for="cuotas">Número de Cuotas</label>
+                    <br>
+                    <select id="cuotas" class="casilla" name="cuotas">
+                        <option value="3">3 cuotas</option>
+                        <option value="6">6 cuotas</option>
+                    </select><br><br>
+                </div>
+            
+                <input id="btnPagar" class="button" type="submit" value="PAGAR" href="">
+
+            </form>
+        
         </section>
-    
+
         <section id="complemento" class="animate__animated animate__fadeIn">
             <div class="complemento__item">
                 <svg class="icono-complemento" xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor"
@@ -166,11 +181,12 @@
             </div>   
 
         </footer>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <script src="./script/carritomonochrome.js"></script>
-    <script src="./script/carritogeneral.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./script/finalizarcompra.js"></script>
 
 </body>
 </html>

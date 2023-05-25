@@ -50,6 +50,9 @@
                             <li class="nav-item menu__item">
                                 <a class="nav-link text-light menu__item" href="contacto.html">CONTACTO</a>
                             </li>
+                            <li class="nav-item menu__item">
+                                <a class="nav-link text-light menu__item" href="compracarritogral.html">CARRITO</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -90,25 +93,25 @@
 
         <section id="formulario" class="animate__animated animate__fadeIn">
             
-            <form id="form">
+            <form id="miFormulario">
 
                 <div class="form__datos">
                     <label>NOMBRE Y APELLIDO</label>
                     <br>
-                    <input class="casilla" type="text" placeholder="Inserta tu nombre y apellido">
+                    <input id="campo1" class="casilla" type="text" placeholder="Inserta tu nombre y apellido">
                 </div>
                 <br>
                 <div class="form__datos">
                     <label>CORREO ELECTRONICO</label>
                     <br>
-                    <input class="casilla" type="email" placeholder="Inserta tu correo electrónico">
+                    <input  id="campo2" class="casilla" type="email" placeholder="Inserta tu correo electrónico">
                 </div>
                 <br>
                 <div class="form__datos">
-                    <textarea class="casilla--text" placeholder="Dejanos tu consulta"></textarea>
+                    <textarea id="campo3" class="casilla--text" placeholder="Dejanos tu consulta"></textarea>
                 </div>
                 <br>
-                <input class="button" type="submit" value="ENVIAR">
+                <input id="botonEnviar" class="button" type="submit" value="ENVIAR">
 
             </form>
         
@@ -172,7 +175,8 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <script src="./script/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./script/formulariocontacto.js"></script>
 
 </body>
 </html>

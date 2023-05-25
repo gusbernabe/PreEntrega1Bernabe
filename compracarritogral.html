@@ -22,7 +22,7 @@
 
 <body>
    
-    <div id="contenedor__compraproducto">
+    <div id="contenedor__carritogral">
 
         <header id="cabecera" class="animate__animated animate__fadeInDown">
             
@@ -94,22 +94,13 @@
            
         </section>
 
-        <section id="ventaproducto" class="animate__animated animate__fadeIn">
-            <div class="container">
-                <img src="assets/img/Productos/Producto 1.jpg" alt="">
-                <div class="descripcion_producto">
-                    <h3>CONJUNTO MONOCHROME</h3>
-                    <label for="unidades">Cuantos conjuntos deseas adquirir</label>
-                    <input type="number" min="1" max="20" value="1" class="contador" id="unidades" />
-                    <button id="agregar" class="btnagregar btnstyle">Agregar al carrito</button>
-                    <p class="respuesta"></p>
-                    <p class="total"></p>
-                    <p class="entrega"></p>
-                    <button id="limpiarCarrito" class="limpiarcarrito btnstyle">Limpiar carrito</button>
-                    <a id="irACarrito" class="btnstyle irACarrito" href="compracarritogral.html">Carrito</a>
+        <section id="carritogral" class="animate__animated animate__fadeIn">
 
-                </div>
-            </div>
+            <h4>Carrito de compra</h4>
+            <p>Aqui podras ver los productos agregados al carrito</p>
+            <div id="carritoGeneral"></div>
+            <button id="btnFinalizarCompra" class="btnstyle">Finalizar Compra</button>
+
         </section>
     
         <section id="complemento" class="animate__animated animate__fadeIn">
@@ -169,7 +160,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <script src="./script/carritomonochrome.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./script/carritogeneral.js"></script>
 
 </body>

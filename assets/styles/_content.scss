@@ -32,6 +32,22 @@
     ;
 }
 
+#contenedor__tarjeta{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(6,auto);
+    grid-template-areas:
+    
+    "cab"
+    "ppal"
+    "nom"
+    "formultarj"
+    "comp"
+    "pie"
+    
+    ;
+}
+
 #contenedor__acercade{
     display: grid;
     grid-template-columns: 100%;
@@ -106,6 +122,22 @@
     "ppal"
     "nom"
     "prod"
+    "comp"
+    "pie"
+    
+    ;
+}
+
+#contenedor_carritogral{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(6,auto);
+    grid-template-areas: 
+    
+    "cab"
+    "ppal"
+    "nom"
+    "carrgral"
     "comp"
     "pie"
     
@@ -245,6 +277,7 @@ body{
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-right: 100px;
 
         img {
             width: 50%;
@@ -255,10 +288,8 @@ body{
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
-    
-            .texto_descripcion_productos {
-                width: 40%;
-            }
+            width: 50%;
+            margin-left: 50px;
         
             .contador[type="number"] {
                 border-radius: 10px;
@@ -295,6 +326,10 @@ body{
             .limpiarcarrito{
                 display: none;
             }
+
+            .irACarrito{
+                display: block;   
+            }
         }
     }
 
@@ -303,6 +338,32 @@ body{
 
 #compraproducto{
     grid-area: compprod;
+}
+
+#carritogral{
+    grid-area: carrgral;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 300px;
+    text-align: center;
+    padding-bottom: 35px;
+
+    .btnstyle {
+        text-decoration: none;
+        color: map-get(c.$colores, links);
+        padding: 7px;
+        padding-left: 14px;
+        padding-right: 14px;
+        margin-bottom: 20px;
+        background: map-get(c.$colores, fondo);
+        border: none;
+        transition: all 1s ease;
+        position: relative;
+        border-radius: 20px;
+    }
 }
 
 // CONTENIDO LOCALES
@@ -342,6 +403,54 @@ body{
 
 #formulario{
     grid-area: formul;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    padding-bottom: 35px;
+
+    .casilla{
+        width: 350px;
+        height: 20px;
+        border-radius: 20px;
+        padding: 15px !important;
+        padding-left: 10px;
+        border: solid 2px;
+        background-color: map-get(c.$colores, fondo-body);
+    }
+
+
+    .casilla--text{
+        width: 350px;
+        height: 200px;
+        border-radius: 20px;
+        padding: 10px;
+        padding-left: 10px;
+        border: solid 2px;
+        background-color: map-get(c.$colores, fondo-body);
+    }
+
+    .button {
+        text-decoration: none;
+        color: map-get(c.$colores, links);
+        padding: 7px;
+        padding-left: 14px;
+        padding-right: 14px;
+        background: map-get(c.$colores, fondo);
+        border-color: map-get(c.$colores, fondo);
+        transition: all 1s ease;
+        border-radius: 20px;
+        font-size: 15px;
+        border: none;
+    }
+
+}
+
+#formulario{
+    grid-area: formultarj;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -47,6 +47,13 @@
   grid-template-areas: "cab" "ppal" "nom" "formul" "comp" "pie";
 }
 
+#contenedor__tarjeta {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(6, auto);
+  grid-template-areas: "cab" "ppal" "nom" "formultarj" "comp" "pie";
+}
+
 #contenedor__acercade {
   display: grid;
   grid-template-columns: 100%;
@@ -80,6 +87,13 @@
   grid-template-columns: 100%;
   grid-template-rows: repeat(6, auto);
   grid-template-areas: "cab" "ppal" "nom" "prod" "comp" "pie";
+}
+
+#contenedor_carritogral {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(6, auto);
+  grid-template-areas: "cab" "ppal" "nom" "carrgral" "comp" "pie";
 }
 
 #cabecera {
@@ -196,6 +210,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-right: 100px;
 }
 #ventaproducto .container img {
   width: 50%;
@@ -205,9 +220,8 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-}
-#ventaproducto .container .descripcion_producto .texto_descripcion_productos {
-  width: 40%;
+  width: 50%;
+  margin-left: 50px;
 }
 #ventaproducto .container .descripcion_producto .contador[type=number] {
   border-radius: 10px;
@@ -240,9 +254,37 @@ body {
 #ventaproducto .container .descripcion_producto .limpiarcarrito {
   display: none;
 }
+#ventaproducto .container .descripcion_producto .irACarrito {
+  display: block;
+}
 
 #compraproducto {
   grid-area: compprod;
+}
+
+#carritogral {
+  grid-area: carrgral;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 300px;
+  text-align: center;
+  padding-bottom: 35px;
+}
+#carritogral .btnstyle {
+  text-decoration: none;
+  color: white;
+  padding: 7px;
+  padding-left: 14px;
+  padding-right: 14px;
+  margin-bottom: 20px;
+  background: #252525;
+  border: none;
+  transition: all 1s ease;
+  position: relative;
+  border-radius: 20px;
 }
 
 #maps {
@@ -273,6 +315,49 @@ body {
 
 #formulario {
   grid-area: formul;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  padding-bottom: 35px;
+}
+#formulario .casilla {
+  width: 350px;
+  height: 20px;
+  border-radius: 20px;
+  padding: 15px !important;
+  padding-left: 10px;
+  border: solid 2px;
+  background-color: #f4effc;
+}
+#formulario .casilla--text {
+  width: 350px;
+  height: 200px;
+  border-radius: 20px;
+  padding: 10px;
+  padding-left: 10px;
+  border: solid 2px;
+  background-color: #f4effc;
+}
+#formulario .button {
+  text-decoration: none;
+  color: white;
+  padding: 7px;
+  padding-left: 14px;
+  padding-right: 14px;
+  background: #252525;
+  border-color: #252525;
+  transition: all 1s ease;
+  border-radius: 20px;
+  font-size: 15px;
+  border: none;
+}
+
+#formulario {
+  grid-area: formultarj;
   display: flex;
   flex-direction: column;
   align-items: center;
