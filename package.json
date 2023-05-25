@@ -1,0 +1,26 @@
+{
+  "name": "proyectofinal-bernabe",
+  "version": "1.0.0",
+  "description": "ultimas modificaciones del proyecto final para curso de javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "gusbernabe"
+  },
+  "keywords": [
+    "class",
+    "coderhouse",
+    "javascript",
+    "gusbernabe",
+    "tools",
+    "tecnology"
+  ],
+  "author": "gusbernabe",
+  "license": "ISC",
+  "dependencies": {
+    "sweetalert2": "^11.7.5"
+  }
+}
