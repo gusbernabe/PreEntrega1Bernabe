@@ -449,7 +449,7 @@ body{
 
 }
 
-#formulario{
+#formulariotarjeta{
     grid-area: formultarj;
     display: flex;
     flex-direction: column;
@@ -564,6 +564,24 @@ body{
     // CONTENIDO CONTACTOS
 
     #formulario{
+        .casilla{
+            width: 600px;
+        }
+    
+    
+        .casilla--text{
+            width: 600px;
+        }
+    
+        .button:hover {
+            text-decoration: none;
+            background: map-get(c.$colores, hover);
+            color: map-get(c.$colores, links);
+        }
+
+    }
+
+    #formulariotarjeta{
         .casilla{
             width: 600px;
         }

@@ -1,6 +1,5 @@
 let carritoGeneral = [];
 
-// Función para actualizar el carrito general
 function actualizarCarritoGeneral() {
     const carritoGeneralContainer = document.getElementById("carritoGeneral");
     carritoGeneralContainer.innerHTML = "";
@@ -40,12 +39,19 @@ function actualizarCarritoGeneral() {
         totalGeneralContainer.innerText = "Total Final: $" + totalFinal;
 
         carritoGeneralContainer.appendChild(totalGeneralContainer);
-        
+
+        // Mostrar u ocultar el botón "Limpiar Carrito" según la cantidad de elementos en el carrito
+        const btnLimpiarCarrito = document.getElementById("btnLimpiarCarrito");
+        btnLimpiarCarrito.style.display = carritoGeneral.length > 0 ? "block" : "none";
     } else {
         const mensajeNoProductos = document.createElement("p");
         mensajeNoProductos.innerText = "No hay productos agregados al carrito general.";
 
         carritoGeneralContainer.appendChild(mensajeNoProductos);
+
+        // Ocultar el botón "Limpiar Carrito" si no hay elementos en el carrito
+        const btnLimpiarCarrito = document.getElementById("btnLimpiarCarrito");
+        btnLimpiarCarrito.style.display = "none";
     }
 
     // Mostrar u ocultar el botón "Finalizar Compra" según la cantidad de elementos en el carrito
@@ -53,7 +59,6 @@ function actualizarCarritoGeneral() {
     btnFinalizarCompra.style.display = carritoGeneral.length > 0 ? "block" : "none";
 }
 
-// Función para finalizar la compra
 function finalizarCompra() {
     // Limpiar el carrito general
     carritoGeneral = [];
@@ -67,7 +72,16 @@ function finalizarCompra() {
     window.location.href = "formulariodepago.html";
 }
 
-// Obtener el carrito general del almacenamiento local al cargar la página
+function limpiarCarrito() {
+    // Limpiar el carrito general
+    carritoGeneral = [];
+    localStorage.removeItem("carritoGeneral");
+    localStorage.removeItem("carrito");
+
+    // Actualizar el carrito general en el HTML
+    actualizarCarritoGeneral();
+}
+
 window.addEventListener("load", () => {
     const carritoGeneralGuardado = localStorage.getItem("carritoGeneral");
     if (carritoGeneralGuardado) {
@@ -78,8 +92,14 @@ window.addEventListener("load", () => {
     // Agregar evento click al botón "Finalizar Compra"
     const btnFinalizarCompra = document.getElementById("btnFinalizarCompra");
     btnFinalizarCompra.addEventListener("click", finalizarCompra);
+
+    // Agregar evento click al botón "Limpiar Carrito"
+    const btnLimpiarCarrito = document.getElementById("btnLimpiarCarrito");
+    btnLimpiarCarrito.addEventListener("click", limpiarCarrito);
+
     actualizarCarritoGeneral();
 });
+
 
 
 
