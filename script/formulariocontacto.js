@@ -33,11 +33,7 @@ botonEnvio.addEventListener('click', function (event) {
             throw new Error('Error en la solicitud a la API.');
         }
     })
-    .then(function (data) {
-        // Maneja la respuesta de la API según tus necesidades
-        console.log('La consulta se envió correctamente a la API.');
-        console.log(data);
-        
+    .then(function (data) {  
         // Limpia el formulario
         formulario.reset();
         

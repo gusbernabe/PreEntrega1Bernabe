@@ -1,149 +1,129 @@
-let unidades = 0;
-let porcentaje = 15;
-let descuento = 0;
-let total = 0;
+import {
+  unidades,
+  porcentaje,
+  descuento,
+  total,
+  Producto,
+  misProductos,
+} from './main.js';
 
-class Producto {
-  constructor(id, nombre, precio, cantidad) {
-    this.id = id;
-    this.nombre = nombre.toUpperCase();
-    this.precio = parseInt(precio);
-    this.cantidad = parseInt(cantidad);
-  }
+// Variables locales
+let unidadesLocal = unidades;
+let porcentajeLocal = porcentaje;
+let descuentoLocal = descuento;
+let totalLocal = total;
+let carritoGeneral = [];
 
-  toString = function () {
-    return this.nombre + "( $" + this.precio + ")";
-  };
-}
-
-let misProductos = [
-  new Producto(1, "Conjunto Monocrome", 15000, 1),
-  new Producto(2, "Conjunto Military Green", 15000, 1),
-  new Producto(3, "Conjunto Green Classic", 15000, 1),
-  new Producto(4, "Conjunto White", 15000, 1),
-  new Producto(5, "Conjunto Onboard", 15000, 1),
-  new Producto(6, "Conjunto Blue", 15000, 1),
-];
-
-// Calcular el precio de un producto, su descuento segun la cantidad y la fecha de retiro teniendo en cuenta la fecha actual, guardando estos datos en el local storage
+// Función para sumar productos al carrito
 function sumar() {
-  const producto = misProductos[2];
-  const cantidad = unidades;
-  const precio = producto.precio;
-  if (cantidad >= 2) {
-    total = cantidad * precio;
-    descuento = cantidad >= 2 ? total * (porcentaje / 100) : 0;
-    total -= descuento;    
-    const mensaje =
-      "Debido a la cantidad de conjuntos que deseas adquirir obtienes un 15% de descuento, el precio final es de $" +
-      total;
-    document.querySelector(".respuesta").innerText = mensaje;
-    document.querySelector(".total").innerText = `Total: $${total}`;
+  const cantidad = unidadesLocal;
+  if (cantidad > 0) {
+    const producto = misProductos[2];
+    const precio = producto.precio;
+
+    totalLocal = cantidad * precio;
+    descuentoLocal = 0; // Inicialmente establece el descuento en 0
+
+    if (cantidad >= 2) {
+      // Calcula el descuento si la cantidad es mayor o igual a 2
+      descuentoLocal = totalLocal * (porcentajeLocal / 100);
+      totalLocal -= descuentoLocal;
+
+      const mensaje =
+        "Debido a la cantidad de conjuntos que deseas adquirir obtienes un 15% de descuento, el precio final es de $" +
+        totalLocal;
+      document.querySelector(".respuesta").innerText = mensaje;
+    } else {
+      document.querySelector(".respuesta").innerText = "";
+    }
+
+    document.querySelector(".total").innerText = `Total: $${totalLocal}`;
 
     let fechaActual = new Date();
     const milisegundosPorDia = 24 * 60 * 60 * 1000;
-    let cantidadDeDias = 3
+    let cantidadDeDias = 3;
     let fechaResultante = new Date(fechaActual.getTime() + milisegundosPorDia * cantidadDeDias);
-    const mensajeEntrega = "Podras retirar tus productos a partir del día " + fechaResultante.toLocaleDateString();
+    const mensajeEntrega = "Podrás retirar tus productos a partir del día " + fechaResultante.toLocaleDateString();
     document.querySelector(".entrega").innerText = mensajeEntrega;
 
-    localStorage.setItem(
-      "carrito",
-      JSON.stringify({
+    // Recuperar el carrito general existente del localStorage
+    let carritoGuardado = localStorage.getItem("carritoGeneral");
+    if (carritoGuardado) {
+      carritoGeneral = JSON.parse(carritoGuardado);
+    }
+
+    // Verificar si el producto ya está en el carrito general
+    const productoEnCarritoIndex = carritoGeneral.findIndex(item => item.nombre === producto.nombre);
+    if (productoEnCarritoIndex !== -1) {
+      // Si el producto ya está en el carrito, actualizar la cantidad
+      carritoGeneral[productoEnCarritoIndex].cantidad = cantidad;
+    } else {
+      // Si el producto no está en el carrito, agregarlo al carrito general
+      carritoGeneral.push({
         nombre: producto.nombre,
         cantidad: cantidad,
-        total: total,
-        fecha: fechaResultante.getTime(),
-      })
-    );
+        precio: precio,
+      });
+    }
+
+    // Guardar el carrito general en el almacenamiento local
+    localStorage.setItem("carritoGeneral", JSON.stringify(carritoGeneral));
+
+    // Actualizar el carrito general en el HTML
+    actualizarCarritoGeneral();
   } else {
-    total = cantidad * precio;
-    const mensaje = "El total por la cantidad que deseas adquirir es $" + total;
-    document.querySelector(".respuesta").innerText = mensaje;
-    document.querySelector(".total").innerText = `Total: $${total}`;
-
-    let fechaActual = new Date();
-    const milisegundosPorDia = 24 * 60 * 60 * 1000;
-    let cantidadDeDias = 3
-    let fechaResultante = new Date(fechaActual.getTime() + milisegundosPorDia * cantidadDeDias);
-    const mensajeEntrega = "Podras retirar tus productos a partir del día " + fechaResultante.toLocaleDateString();
-    document.querySelector(".entrega").innerText = mensajeEntrega;
-    
-    localStorage.setItem(
-      "carrito",
-      JSON.stringify({
-        nombre: producto.nombre,
-        cantidad: cantidad,
-        total: total,
-        fecha: fechaResultante.getTime(),
-      })
-    );
+    const mensajeError = "Debes agregar al menos un producto al carrito";
+    document.querySelector(".respuesta").innerText = mensajeError;
   }
-
-  const limpiarCarritoBtn = document.getElementById("limpiarCarrito");
-  limpiarCarritoBtn.style.display = "block";
-
-  // Agregar el producto al carrito general
-  carritoGeneral.push({
-    nombre: producto.nombre,
-    cantidad: cantidad,
-    precio: precio
-  });
-
-  // Guardar el carrito general en el almacenamiento local
-  localStorage.setItem("carritoGeneral", JSON.stringify(carritoGeneral));
-
-  // Actualizar el carrito general en el HTML
-  actualizarCarritoGeneral();
-
 }
 
-// El contador define la cantidad de unidades segun el numero que defina el usuario
+// Actualiza la cantidad de unidades locales al cambiar el valor en el contador
 const inputUnidades = document.querySelector(".contador");
 inputUnidades.addEventListener("change", () => {
-  unidades = inputUnidades.value;
+  unidadesLocal = inputUnidades.value;
 });
 
+// Evento click para sumar productos al carrito
 const btnagregar = document.getElementById("agregar");
 btnagregar.addEventListener("click", sumar);
 
-// Si el carrito contiene elementos los datos del mismo se mantienen en el html al cargar la página
+// Carga inicial de la página
 window.addEventListener("load", () => {
-  const carritoGuardado = localStorage.getItem("carrito");
-  if (carritoGuardado) {
-    const carrito = JSON.parse(carritoGuardado);
+  const carritoGuardado = JSON.parse(localStorage.getItem("carritoGeneral"));
+  if (carritoGuardado && carritoGuardado.length > 0) {
+    const carrito = carritoGuardado[0];
     const mensaje =
       "Tienes " +
       carrito.cantidad +
       " unidades del " +
       carrito.nombre +
       " en tu carrito de compras, con un total de $" +
-      carrito.total;
+      carrito.precio * carrito.cantidad;
     document.querySelector(".respuesta").innerText = mensaje;
-    document.querySelector(".total").innerText = `Total: $${carrito.total}`;
+    document.querySelector(".total").innerText = `Total: $${carrito.precio * carrito.cantidad}`;
     const limpiarCarritoBtn = document.getElementById("limpiarCarrito");
     limpiarCarritoBtn.style.display = "block";
 
     if (carrito.fecha) {
       const fechaResultante = new Date(carrito.fecha);
-      const mensajeEntrega = "Podras retirar tus productos a partir del día " + fechaResultante.toLocaleDateString();
+      const mensajeEntrega = "Podrás retirar tus productos a partir del día " + fechaResultante.toLocaleDateString();
       document.querySelector(".entrega").innerText = mensajeEntrega;
     }
   }
 });
 
-// Si hay elementos en el carrito se muestra el boton para limpiarlo
-if (localStorage.getItem("carrito") !== null) {
+// Verifica si hay un carrito guardado al cargar la página y muestra los botones correspondientes
+if (localStorage.getItem("carritoGeneral") !== null) {
   const limpiarCarritoBtn = document.getElementById("limpiarCarrito");
   limpiarCarritoBtn.style.display = "block";
   const irACarritobtn = document.getElementById("irACarrito");
   irACarritobtn.style.display = "block";
 }
 
+// Limpia el carrito al hacer clic en el botón correspondiente
 const limpiarCarritoBtn = document.getElementById("limpiarCarrito");
 limpiarCarritoBtn.addEventListener("click", () => {
-  localStorage.removeItem("carrito");
-  localStorage.removeItem("fechaEntrega"); 
+  localStorage.removeItem("carritoGeneral");
   limpiarCarritoBtn.style.display = "none";
   document.querySelector(".respuesta").innerText = "";
   document.querySelector(".total").innerText = "";
